@@ -1,0 +1,539 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{89EB48D9-6255-4BCA-A6E2-32638975A470}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Ghor_Sheba</RootNamespace>
+    <AssemblyName>Ghor-Sheba</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44311</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>4.0</TypeScriptToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\ServiceProviderController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Booking.cs">
+      <DependentUpon>ShebaDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Booking_confirms.cs">
+      <DependentUpon>ShebaDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Booking_details.cs">
+      <DependentUpon>ShebaDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Complaint.cs">
+      <DependentUpon>ShebaDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LoginUser.cs">
+      <DependentUpon>ShebaDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Review.cs">
+      <DependentUpon>ShebaDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Service.cs">
+      <DependentUpon>ShebaDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\service_provider_status.cs">
+      <DependentUpon>ShebaDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ShebaDb.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ShebaDb.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ShebaDb.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ShebaDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ShebaDb.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ShebaDb.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>ShebaDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AdminTemplate\css\animate.css" />
+    <Content Include="AdminTemplate\css\bootstrap.css" />
+    <Content Include="AdminTemplate\css\clndr.css" />
+    <Content Include="AdminTemplate\css\custom.css" />
+    <Content Include="AdminTemplate\css\font-awesome.css" />
+    <Content Include="AdminTemplate\css\jqvmap.css" />
+    <Content Include="AdminTemplate\css\style.css" />
+    <Content Include="AdminTemplate\fonts\fontawesome-webfont.svg" />
+    <Content Include="AdminTemplate\images\1.png" />
+    <Content Include="AdminTemplate\images\2.png" />
+    <Content Include="AdminTemplate\images\3.png" />
+    <Content Include="AdminTemplate\images\a.png" />
+    <Content Include="AdminTemplate\images\i1.png" />
+    <Content Include="AdminTemplate\images\i2.png" />
+    <Content Include="AdminTemplate\images\i3.png" />
+    <Content Include="AdminTemplate\images\i4.png" />
+    <Content Include="AdminTemplate\images\img1.png" />
+    <Content Include="AdminTemplate\images\lock.png" />
+    <Content Include="AdminTemplate\images\tick.png" />
+    <Content Include="AdminTemplate\images\user.png" />
+    <Content Include="AdminTemplate\js\bootstrap.js" />
+    <Content Include="AdminTemplate\js\Chart.js" />
+    <Content Include="AdminTemplate\js\classie.js" />
+    <Content Include="AdminTemplate\js\clndr.js" />
+    <Content Include="AdminTemplate\js\custom.js" />
+    <Content Include="AdminTemplate\js\jquery-1.11.1.min.js" />
+    <Content Include="AdminTemplate\js\jquery.circlechart.js" />
+    <Content Include="AdminTemplate\js\jquery.nicescroll.js" />
+    <Content Include="AdminTemplate\js\jquery.vmap.js" />
+    <Content Include="AdminTemplate\js\jquery.vmap.sampledata.js" />
+    <Content Include="AdminTemplate\js\jquery.vmap.world.js" />
+    <Content Include="AdminTemplate\js\metisMenu.min.js" />
+    <Content Include="AdminTemplate\js\modernizr.custom.js" />
+    <Content Include="AdminTemplate\js\moment-2.2.1.js" />
+    <Content Include="AdminTemplate\js\scripts.js" />
+    <Content Include="AdminTemplate\js\site.js" />
+    <Content Include="AdminTemplate\js\skycons.js" />
+    <Content Include="AdminTemplate\js\underscore-min.js" />
+    <Content Include="AdminTemplate\js\validator.min.js" />
+    <Content Include="AdminTemplate\js\wow.min.js" />
+    <Content Include="AdminTemplate\Profile\css\jquery-ui.css" />
+    <Content Include="AdminTemplate\Profile\css\style.css" />
+    <Content Include="AdminTemplate\Profile\images\arrows.png" />
+    <Content Include="AdminTemplate\Profile\images\calender.png" />
+    <Content Include="AdminTemplate\Profile\images\date-icon.png" />
+    <Content Include="AdminTemplate\Profile\images\female.png" />
+    <Content Include="AdminTemplate\Profile\images\left.png" />
+    <Content Include="AdminTemplate\Profile\images\male.png" />
+    <Content Include="AdminTemplate\Profile\images\right.png" />
+    <Content Include="AdminTemplate\Profile\images\user.png" />
+    <Content Include="AdminTemplate\Profile\js\jquery-2.1.4.min.js" />
+    <Content Include="AdminTemplate\Profile\js\jquery-3.1.1.js" />
+    <Content Include="AdminTemplate\Profile\js\jquery-ui.js" />
+    <Content Include="Content\bootstrap-lumen.css" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Models\ShebaDb.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ShebaDb.edmx</DependentUpon>
+      <LastGenOutput>ShebaDb.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\ShebaDb.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ShebaDb.edmx</DependentUpon>
+      <LastGenOutput>ShebaDb.cs</LastGenOutput>
+    </Content>
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\esm\popper-utils.js" />
+    <Content Include="Scripts\esm\popper-utils.min.js" />
+    <Content Include="Scripts\esm\popper.js" />
+    <Content Include="Scripts\esm\popper.min.js" />
+    <Content Include="Scripts\esm\popper.min.js.map" />
+    <Content Include="Scripts\esm\popper.js.map" />
+    <Content Include="Scripts\esm\popper-utils.min.js.map" />
+    <Content Include="Scripts\esm\popper-utils.js.map" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="AdminTemplate\fonts\fontawesome-webfont.eot" />
+    <Content Include="AdminTemplate\fonts\fontawesome-webfont.ttf" />
+    <Content Include="AdminTemplate\fonts\fontawesome-webfont.woff" />
+    <Content Include="AdminTemplate\fonts\FontAwesome.otf" />
+    <Content Include="AdminTemplate\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="AdminTemplate\fonts\glyphicons-halflings-regular.woff2" />
+    <EntityDeploy Include="Models\ShebaDb.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ShebaDb.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\ShebaDb.edmx.diagram">
+      <DependentUpon>ShebaDb.edmx</DependentUpon>
+    </Content>
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\popper-utils.js" />
+    <Content Include="Scripts\popper-utils.min.js" />
+    <Content Include="Scripts\popper.js" />
+    <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\umd\popper-utils.js" />
+    <Content Include="Scripts\umd\popper-utils.min.js" />
+    <Content Include="Scripts\umd\popper.js" />
+    <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="ServiceProviderTemplate\Dashboard\css\bootstrap.min.css" />
+    <Content Include="ServiceProviderTemplate\Dashboard\css\clndr.css" />
+    <Content Include="ServiceProviderTemplate\Dashboard\css\custom.css" />
+    <Content Include="ServiceProviderTemplate\Dashboard\css\font-awesome.css" />
+    <Content Include="ServiceProviderTemplate\Dashboard\css\jqvmap.css" />
+    <Content Include="ServiceProviderTemplate\Dashboard\css\lines.css" />
+    <Content Include="ServiceProviderTemplate\Dashboard\css\style.css" />
+    <Content Include="ServiceProviderTemplate\Dashboard\fonts\fontawesome-webfont.svg" />
+    <Content Include="ServiceProviderTemplate\Dashboard\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="ServiceProviderTemplate\Dashboard\images\1.png" />
+    <Content Include="ServiceProviderTemplate\Dashboard\images\2.png" />
+    <Content Include="ServiceProviderTemplate\Dashboard\images\3.png" />
+    <Content Include="ServiceProviderTemplate\Dashboard\images\4.png" />
+    <Content Include="ServiceProviderTemplate\Dashboard\images\5.png" />
+    <Content Include="ServiceProviderTemplate\Dashboard\images\arrow-left.png" />
+    <Content Include="ServiceProviderTemplate\Dashboard\images\arrow-right.png" />
+    <Content Include="ServiceProviderTemplate\Dashboard\images\bg.jpg" />
+    <Content Include="ServiceProviderTemplate\Dashboard\images\cloud.png" />
+    <Content Include="ServiceProviderTemplate\Dashboard\images\logo.png" />
+    <Content Include="ServiceProviderTemplate\Dashboard\images\pic1.png" />
+    <Content Include="ServiceProviderTemplate\Dashboard\images\pic2.png" />
+    <Content Include="ServiceProviderTemplate\Dashboard\images\pic3.jpg" />
+    <Content Include="ServiceProviderTemplate\Dashboard\images\pic4.jpg" />
+    <Content Include="ServiceProviderTemplate\Dashboard\js\bootstrap.min.js" />
+    <Content Include="ServiceProviderTemplate\Dashboard\js\Chart.js" />
+    <Content Include="ServiceProviderTemplate\Dashboard\js\clndr.js" />
+    <Content Include="ServiceProviderTemplate\Dashboard\js\custom.js" />
+    <Content Include="ServiceProviderTemplate\Dashboard\js\d3.v3.js" />
+    <Content Include="ServiceProviderTemplate\Dashboard\js\jquery.min.js" />
+    <Content Include="ServiceProviderTemplate\Dashboard\js\jquery.vmap.js" />
+    <Content Include="ServiceProviderTemplate\Dashboard\js\jquery.vmap.sampledata.js" />
+    <Content Include="ServiceProviderTemplate\Dashboard\js\jquery.vmap.world.js" />
+    <Content Include="ServiceProviderTemplate\Dashboard\js\metisMenu.min.js" />
+    <Content Include="ServiceProviderTemplate\Dashboard\js\moment-2.2.1.js" />
+    <Content Include="ServiceProviderTemplate\Dashboard\js\rickshaw.js" />
+    <Content Include="ServiceProviderTemplate\Dashboard\js\site.js" />
+    <Content Include="ServiceProviderTemplate\Dashboard\js\underscore-min.js" />
+    <Content Include="Template\about.html" />
+    <Content Include="Template\blog.html" />
+    <Content Include="Template\booking.html" />
+    <Content Include="Template\car-wash-website-template.jpg" />
+    <Content Include="Template\contact.html" />
+    <Content Include="Template\css\About.css" />
+    <Content Include="Template\css\login.css" />
+    <Content Include="Template\css\Signup.css" />
+    <Content Include="Template\css\style.css" />
+    <Content Include="Template\img\1.png" />
+    <Content Include="Template\img\2.png" />
+    <Content Include="Template\img\about.jpg" />
+    <Content Include="Template\img\about_man.png" />
+    <Content Include="Template\img\about_tringle.png" />
+    <Content Include="Template\img\banner1.jpg" />
+    <Content Include="Template\img\bg.jpg" />
+    <Content Include="Template\img\blog-1.jpg" />
+    <Content Include="Template\img\blog-2.jpg" />
+    <Content Include="Template\img\blog-3.jpg" />
+    <Content Include="Template\img\carousel-1.jpg" />
+    <Content Include="Template\img\carousel-2.jpg" />
+    <Content Include="Template\img\carousel-3.jpg" />
+    <Content Include="Template\img\log.svg" />
+    <Content Include="Template\img\page-header.jpg" />
+    <Content Include="Template\img\post-1.jpg" />
+    <Content Include="Template\img\post-2.jpg" />
+    <Content Include="Template\img\post-3.jpg" />
+    <Content Include="Template\img\post-4.jpg" />
+    <Content Include="Template\img\post-5.jpg" />
+    <Content Include="Template\img\register.svg" />
+    <Content Include="Template\img\single.jpg" />
+    <Content Include="Template\img\team-1.jpg" />
+    <Content Include="Template\img\team-2.jpg" />
+    <Content Include="Template\img\team-3.jpg" />
+    <Content Include="Template\img\team-4.jpg" />
+    <Content Include="Template\img\testimonial-1.jpg" />
+    <Content Include="Template\img\testimonial-2.jpg" />
+    <Content Include="Template\img\testimonial-3.jpg" />
+    <Content Include="Template\img\testimonial-4.jpg" />
+    <Content Include="Template\img\tick.png" />
+    <Content Include="Template\img\user.jpg" />
+    <Content Include="Template\index.html" />
+    <Content Include="Template\js\app.js" />
+    <Content Include="Template\js\main.js" />
+    <Content Include="Template\lib\animate\animate.css" />
+    <Content Include="Template\lib\animate\animate.min.css" />
+    <Content Include="Template\lib\counterup\counterup.min.js" />
+    <Content Include="Template\lib\easing\easing.js" />
+    <Content Include="Template\lib\easing\easing.min.js" />
+    <Content Include="Template\lib\flaticon\backup.txt" />
+    <Content Include="Template\lib\flaticon\font\flaticon.css" />
+    <Content Include="Template\lib\flaticon\font\flaticon.html" />
+    <Content Include="Template\lib\flaticon\font\Flaticon.svg" />
+    <Content Include="Template\lib\owlcarousel\assets\ajax-loader.gif" />
+    <Content Include="Template\lib\owlcarousel\assets\owl.carousel.css" />
+    <Content Include="Template\lib\owlcarousel\assets\owl.carousel.min.css" />
+    <Content Include="Template\lib\owlcarousel\assets\owl.theme.default.css" />
+    <Content Include="Template\lib\owlcarousel\assets\owl.theme.default.min.css" />
+    <Content Include="Template\lib\owlcarousel\assets\owl.theme.green.css" />
+    <Content Include="Template\lib\owlcarousel\assets\owl.theme.green.min.css" />
+    <Content Include="Template\lib\owlcarousel\assets\owl.video.play.png" />
+    <Content Include="Template\lib\owlcarousel\owl.carousel.js" />
+    <Content Include="Template\lib\owlcarousel\owl.carousel.min.js" />
+    <Content Include="Template\lib\waypoints\links.php" />
+    <Content Include="Template\lib\waypoints\waypoints.min.js" />
+    <Content Include="Template\LICENSE.txt" />
+    <Content Include="Template\location.html" />
+    <Content Include="Template\mail\contact.js" />
+    <Content Include="Template\mail\contact.php" />
+    <Content Include="Template\mail\jqBootstrapValidation.min.js" />
+    <Content Include="Template\price.html" />
+    <Content Include="Template\READ-ME.txt" />
+    <Content Include="Template\service.html" />
+    <Content Include="Template\single.html" />
+    <Content Include="Template\team.html" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Scripts\umd\popper.min.js.map" />
+    <Content Include="Scripts\umd\popper.js.map" />
+    <Content Include="Scripts\umd\popper-utils.min.js.map" />
+    <Content Include="Scripts\umd\popper-utils.js.map" />
+    <Content Include="Scripts\README.md" />
+    <Content Include="Scripts\popper.min.js.map" />
+    <Content Include="Scripts\popper.js.map" />
+    <Content Include="Scripts\popper-utils.min.js.map" />
+    <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Template\lib\flaticon\font\Flaticon.eot" />
+    <Content Include="Template\lib\flaticon\font\Flaticon.ttf" />
+    <Content Include="Template\lib\flaticon\font\Flaticon.woff" />
+    <Content Include="Template\lib\flaticon\font\Flaticon.woff2" />
+    <Content Include="Template\lib\flaticon\font\_flaticon.scss" />
+    <Content Include="Template\lib\flaticon\license\license.pdf" />
+    <Content Include="Template\lib\owlcarousel\LICENSE" />
+    <Content Include="Views\Customer\SigupLayout.cshtml" />
+    <Content Include="Views\Customer\Signup.cshtml" />
+    <Content Include="Views\Home\AboutUsLayout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Login\Signup.cshtml" />
+    <Content Include="Views\Login\SigupLayout.cshtml" />
+    <Content Include="Views\Login\LoginLayout.cshtml" />
+    <Content Include="Views\Login\Login.cshtml" />
+    <Content Include="Views\Admin\IndexLayout.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\ProfileLayout.cshtml" />
+    <Content Include="Views\Admin\Profile.cshtml" />
+    <Content Include="Views\Admin\ManageManager.cshtml" />
+    <Content Include="Views\Admin\ManageCustomer.cshtml" />
+    <Content Include="Views\Admin\ManageServiceProvider.cshtml" />
+    <Content Include="Views\Admin\AddManager.cshtml" />
+    <Content Include="Views\Admin\AddServiceProvider.cshtml" />
+    <Content Include="Views\ServiceProvider\IndexLayout.cshtml" />
+    <Content Include="Views\ServiceProvider\Index.cshtml" />
+    <Content Include="ServiceProviderTemplate\Dashboard\fonts\fontawesome-webfont.eot" />
+    <Content Include="ServiceProviderTemplate\Dashboard\fonts\fontawesome-webfont.ttf" />
+    <Content Include="ServiceProviderTemplate\Dashboard\fonts\fontawesome-webfont.woff" />
+    <Content Include="ServiceProviderTemplate\Dashboard\fonts\fontawesome-webfont.woff2" />
+    <Content Include="ServiceProviderTemplate\Dashboard\fonts\FontAwesome.otf" />
+    <Content Include="ServiceProviderTemplate\Dashboard\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="ServiceProviderTemplate\Dashboard\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="ServiceProviderTemplate\Dashboard\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="ServiceProviderTemplate\Dashboard\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Views\Admin\DeleteManager.cshtml" />
+    <Content Include="Views\Admin\EditManager.cshtml" />
+    <Content Include="Views\Admin\EditCustomer.cshtml" />
+    <Content Include="Views\Admin\EditServiceProvider.cshtml" />
+    <Content Include="Views\Admin\DeleteServiceProvider.cshtml" />
+    <Content Include="Views\Admin\DeleteCustomer.cshtml" />
+    <Content Include="Views\Admin\AddCustomer.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Scripts\index.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>65148</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44311/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>
