@@ -54,6 +54,7 @@
           <Property Name="address" Type="nchar" MaxLength="50" Nullable="false" />
           <Property Name="status" Type="nchar" MaxLength="20" Nullable="false" />
           <Property Name="fullname" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="image" Type="image" />
         </EntityType>
         <EntityType Name="Reviews">
           <Key>
@@ -79,16 +80,7 @@
           <Property Name="name" Type="nchar" MaxLength="30" Nullable="false" />
           <Property Name="category" Type="nchar" MaxLength="30" Nullable="false" />
           <Property Name="description" Type="nchar" MaxLength="50" Nullable="false" />
-        </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
+          <Property Name="cost" Type="int" />
         </EntityType>
         <Association Name="FK_Booking_confirm_Booking">
           <End Role="Bookings" Type="Self.Bookings" Multiplicity="1" />
@@ -99,6 +91,18 @@
             </Principal>
             <Dependent Role="Booking_confirms">
               <PropertyRef Name="booking_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Booking_confirms_LoginUsers">
+          <End Role="LoginUsers" Type="Self.LoginUsers" Multiplicity="1" />
+          <End Role="Booking_confirms" Type="Self.Booking_confirms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoginUsers">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Booking_confirms">
+              <PropertyRef Name="service_provider_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -183,9 +187,12 @@
           <EntitySet Name="Reviews" EntityType="Self.Reviews" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="service_provider_status" EntityType="Self.service_provider_status" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Services" EntityType="Self.Services" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Booking_confirm_Booking" Association="Self.FK_Booking_confirm_Booking">
             <End Role="Bookings" EntitySet="Bookings" />
+            <End Role="Booking_confirms" EntitySet="Booking_confirms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Booking_confirms_LoginUsers" Association="Self.FK_Booking_confirms_LoginUsers">
+            <End Role="LoginUsers" EntitySet="LoginUsers" />
             <End Role="Booking_confirms" EntitySet="Booking_confirms" />
           </AssociationSet>
           <AssociationSet Name="FK_Booking_detail_Booking" Association="Self.FK_Booking_detail_Booking">
@@ -227,6 +234,7 @@
           <Property Name="service_provider_id" Type="Int32" Nullable="false" />
           <Property Name="status" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Booking" Relationship="Self.FK_Booking_confirm_Booking" FromRole="Booking_confirms" ToRole="Bookings" />
+          <NavigationProperty Name="LoginUser" Relationship="Self.FK_Booking_confirms_LoginUsers" FromRole="Booking_confirms" ToRole="LoginUsers" />
         </EntityType>
         <EntityType Name="Booking_details">
           <Key>
@@ -274,6 +282,8 @@
           <Property Name="address" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="status" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="fullname" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Booking_confirms" Relationship="Self.FK_Booking_confirms_LoginUsers" FromRole="LoginUsers" ToRole="Booking_confirms" />
           <NavigationProperty Name="Bookings" Relationship="Self.FK_Booking_LoginUser" FromRole="LoginUsers" ToRole="Bookings" />
           <NavigationProperty Name="Complaints" Relationship="Self.FK_Complaint_LoginUser" FromRole="LoginUsers" ToRole="Complaints" />
           <NavigationProperty Name="Reviews" Relationship="Self.FK_Review_LoginUser" FromRole="LoginUsers" ToRole="Reviews" />
@@ -305,17 +315,8 @@
           <Property Name="name" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="category" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="description" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="cost" Type="Int32" />
           <NavigationProperty Name="Booking_details" Relationship="Self.FK_Booking_detail_Service" FromRole="Services" ToRole="Booking_details" />
-        </EntityType>
-        <EntityType Name="sysdiagram">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <Association Name="FK_Booking_confirm_Booking">
           <End Role="Bookings" Type="Self.Booking" Multiplicity="1" />
@@ -326,6 +327,18 @@
             </Principal>
             <Dependent Role="Booking_confirms">
               <PropertyRef Name="booking_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Booking_confirms_LoginUsers">
+          <End Role="LoginUsers" Type="Self.LoginUser" Multiplicity="1" />
+          <End Role="Booking_confirms" Type="Self.Booking_confirms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoginUsers">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Booking_confirms">
+              <PropertyRef Name="service_provider_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -410,9 +423,12 @@
           <EntitySet Name="Reviews" EntityType="Self.Review" />
           <EntitySet Name="service_provider_status" EntityType="Self.service_provider_status" />
           <EntitySet Name="Services" EntityType="Self.Service" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <AssociationSet Name="FK_Booking_confirm_Booking" Association="Self.FK_Booking_confirm_Booking">
             <End Role="Bookings" EntitySet="Bookings" />
+            <End Role="Booking_confirms" EntitySet="Booking_confirms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Booking_confirms_LoginUsers" Association="Self.FK_Booking_confirms_LoginUsers">
+            <End Role="LoginUsers" EntitySet="LoginUsers" />
             <End Role="Booking_confirms" EntitySet="Booking_confirms" />
           </AssociationSet>
           <AssociationSet Name="FK_Booking_detail_Booking" Association="Self.FK_Booking_detail_Booking">
@@ -498,6 +514,7 @@
                 <ScalarProperty Name="address" ColumnName="address" />
                 <ScalarProperty Name="status" ColumnName="status" />
                 <ScalarProperty Name="fullname" ColumnName="fullname" />
+                <ScalarProperty Name="image" ColumnName="image" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -526,17 +543,7 @@
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="category" ColumnName="category" />
                 <ScalarProperty Name="description" ColumnName="description" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="ShebaDbModel.sysdiagram">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="cost" ColumnName="cost" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -16,6 +16,7 @@ namespace Ghor_Sheba.Models
     {
         public LoginUser()
         {
+            this.Booking_confirms = new HashSet<Booking_confirms>();
             this.Bookings = new HashSet<Booking>();
             this.Complaints = new HashSet<Complaint>();
             this.Reviews = new HashSet<Review>();
@@ -31,7 +32,9 @@ namespace Ghor_Sheba.Models
         public string address { get; set; }
         public string status { get; set; }
         public string fullname { get; set; }
+        public byte[] image { get; set; }
     
+        public virtual ICollection<Booking_confirms> Booking_confirms { get; set; }
         public virtual ICollection<Booking> Bookings { get; set; }
         public virtual ICollection<Complaint> Complaints { get; set; }
         public virtual ICollection<Review> Reviews { get; set; }

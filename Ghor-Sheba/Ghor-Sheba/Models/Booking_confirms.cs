@@ -20,5 +20,6 @@ namespace Ghor_Sheba.Models
         public string status { get; set; }
     
         public virtual Booking Booking { get; set; }
+        public virtual LoginUser LoginUser { get; set; }
     }
 }
