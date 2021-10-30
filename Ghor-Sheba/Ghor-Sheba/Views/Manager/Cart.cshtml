@@ -17,25 +17,30 @@
         <th>
             @Html.DisplayNameFor(model => model.status)
         </th>
-        <th></th>
+        <th>Action</th>
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.service_provider_id)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.status)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
-        </td>
-    </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.service_provider_id)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.status)
+    </td>
+    <td>
+        <a href="/Manager/DeleteToCart/@item.id" class="btn btn-danger">Delete</a>
+    </td>
+</tr>
 }
 
 </table>
+
+@*<form action="/Manager/Confirm" method="post">
+    <label>Status</label>
+    <input type="text" name="delevery_address" required="required" />
+    <br />
+    <input type="submit" name="submit" value="Confirm" class="btn btn-danger" />
+</form>*@
 
 <a href="/Manager/Confirm" class="btn btn-danger">Confirm</a>

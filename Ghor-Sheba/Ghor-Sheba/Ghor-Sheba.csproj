@@ -139,6 +139,7 @@
     </Compile>
     <Compile Include="ManagerRepository\assign.cs" />
     <Compile Include="ManagerRepository\BookingRepository.cs" />
+    <Compile Include="ManagerRepository\ManagerProfileRepository.cs" />
     <Compile Include="ManagerRepository\ServiceAssignRepository.cs" />
     <Compile Include="ManagerRepository\ServiceProviderRepository.cs" />
     <Compile Include="ManagerRepository\ServiceRepository.cs" />
@@ -159,6 +160,7 @@
     </Compile>
     <Compile Include="Models\ManagerViewModel\BookingConfirmModel.cs" />
     <Compile Include="Models\ManagerViewModel\BookingModel.cs" />
+    <Compile Include="Models\ManagerViewModel\ManagerProfileModel.cs" />
     <Compile Include="Models\ManagerViewModel\ServiceModel.cs" />
     <Compile Include="Models\Review.cs">
       <DependentUpon>ShebaDB.tt</DependentUpon>
@@ -496,6 +498,7 @@
     <Content Include="Views\Manager\Service_Provider_List.cshtml" />
     <Content Include="Views\Manager\Cart.cshtml" />
     <Content Include="Views\Manager\Service_Provider_Assign.cshtml" />
+    <Content Include="Views\Manager\MyProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

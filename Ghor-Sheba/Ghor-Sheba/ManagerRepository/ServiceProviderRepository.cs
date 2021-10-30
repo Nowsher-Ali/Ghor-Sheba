@@ -31,19 +31,19 @@ namespace Ghor_Sheba.ManagerRepository
 
         public static List<ServiceProviderModel> GetAll()
         {
-            var product = new List<ServiceProviderModel>();
+            var spm = new List<ServiceProviderModel>();
 
             foreach (var b in db.service_provider_status)
             {
-                ServiceProviderModel pm = new ServiceProviderModel()
+                ServiceProviderModel sp = new ServiceProviderModel()
                 {
                     id = b.id,
                     service_provider_id = b.service_provider_id,
                     status = b.status
                 };
-                product.Add(pm);
+                spm.Add(sp);
             }
-            return product;
+            return spm;
         }
     }
 }
