@@ -9,6 +9,8 @@ namespace Ghor_Sheba.Controllers
     public class CustomerController : Controller
     {
         // GET: Customer
+
+        //testing 
         public ActionResult Index()
         {
             return View();

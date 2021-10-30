@@ -33,6 +33,5 @@ namespace Ghor_Sheba.Models
         public DbSet<Review> Reviews { get; set; }
         public DbSet<service_provider_status> service_provider_status { get; set; }
         public DbSet<Service> Services { get; set; }
-        public DbSet<sysdiagram> sysdiagrams { get; set; }
     }
 }
