@@ -157,6 +157,7 @@
     <Compile Include="Models\LoginUser.cs">
       <DependentUpon>ShebaDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ManagerViewModel\BookingConfirmModel.cs" />
     <Compile Include="Models\ManagerViewModel\BookingModel.cs" />
     <Compile Include="Models\ManagerViewModel\ServiceModel.cs" />
     <Compile Include="Models\Review.cs">
@@ -494,6 +495,7 @@
     <Content Include="Views\Manager\Booking_Edit.cshtml" />
     <Content Include="Views\Manager\Service_Provider_List.cshtml" />
     <Content Include="Views\Manager\Cart.cshtml" />
+    <Content Include="Views\Manager\Service_Provider_Assign.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

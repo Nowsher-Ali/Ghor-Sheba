@@ -1,16 +1,19 @@
-﻿@model IEnumerable<Ghor_Sheba.Models.ServiceProviderModel>
+﻿@model IEnumerable<Ghor_Sheba.Models.Booking_confirms>
 
 @{
-    ViewBag.Title = "Cart";
+    ViewBag.Title = "Service_Provider_Assign";
 }
 
-<h2>Cart</h2>
+<h2>Service_Provider_Assign</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.booking_id)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.service_provider_id)
         </th>
@@ -22,6 +25,9 @@
 
 @foreach (var item in Model) {
     <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.booking_id)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.service_provider_id)
         </td>
@@ -37,5 +43,3 @@
 }
 
 </table>
-
-<a href="/Manager/Confirm" class="btn btn-danger">Confirm</a>

@@ -15,31 +15,19 @@ namespace Ghor_Sheba.ManagerRepository
             db = new ShebaDbEntities();
         }
 
-        public static void PlaceAssign(List<ServiceProviderModel> products, int cId)
+        public static void PlaceAssignServiceProvider(int bId)
         {
-            Booking o = new Booking();
+            Booking_confirms bc = new Booking_confirms();
 
-            o.customer_id = cId;
-            o.cost = 200;
-            o.payment_status = "pending";
-            o.status = "pending";
+            bc.booking_id = bId;
+            bc.service_provider_id = 3;
+            bc.status = "pending";
 
-            db.Bookings.Add(o);
+            db.Booking_confirms.Add(bc);
             db.SaveChanges();
-
-            foreach (var p in products)
-            {
-                var od = new Booking_details()
-                {
-                    booking_id = p.id,
-                    service_id = p.service_provider_id
-                };
-                db.Booking_details.Add(od);
-                db.SaveChanges();
-            }
         }
 
-        public static List<Booking> ServiceProviderAssign(int id)
+        public static List<Booking_confirms> MyServiceProviderAssign(int id)
         {
             //return db.orders.Where(e => e.id == id).ToList();
 

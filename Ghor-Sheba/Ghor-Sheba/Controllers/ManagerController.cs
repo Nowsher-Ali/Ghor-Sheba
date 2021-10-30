@@ -132,22 +132,22 @@ namespace Ghor_Sheba.Controllers
 
         public ActionResult AddToCart(int id)
         {
-            var pm = ServiceProviderRepository.Get(id);
+            var spr = ServiceProviderRepository.Get(id);
 
-            List<ServiceProviderModel> products;
+            List<ServiceProviderModel> spm;
 
             if (Session["cart"] == null)
             {
-                products = new List<ServiceProviderModel>();
+                spm = new List<ServiceProviderModel>();
             }
             else
             {
                 var json = Session["cart"].ToString();
-                products = new JavaScriptSerializer().Deserialize<List<ServiceProviderModel>>(json);
+                spm = new JavaScriptSerializer().Deserialize<List<ServiceProviderModel>>(json);
             }
-            products.Add(pm);
+            spm.Add(spr);
 
-            var json2 = new JavaScriptSerializer().Serialize(products);
+            var json2 = new JavaScriptSerializer().Serialize(spm);
             Session["cart"] = json2;
 
             return RedirectToAction("Service_Provider_List", "Manager");
@@ -156,23 +156,32 @@ namespace Ghor_Sheba.Controllers
         public ActionResult Cart()
         {
             var json = Session["cart"].ToString();
-            var products = new JavaScriptSerializer().Deserialize<List<ServiceProviderModel>>(json);
+            var spm = new JavaScriptSerializer().Deserialize<List<ServiceProviderModel>>(json);
 
-            return View(products);
+            return View(spm);
         }
 
-        public ActionResult Checkout()
+        public ActionResult Confirm()
         {
             var json = Session["cart"].ToString();
-            var products = new JavaScriptSerializer().Deserialize<List<ServiceProviderModel>>(json);
+            var spm = new JavaScriptSerializer().Deserialize<List<ServiceProviderModel>>(json);
 
-            var cid = 1; //User.Identity.Name => I pencipal class instance from cookei file
+            var bid = 1; //User.Identity.Name => I pencipal class instance from cookei file
 
-            ServiceProviderRepository.PlaceOrder(products, cid);
+            ServiceAssignRepository.PlaceAssignServiceProvider(bid);
 
             Session.Remove("cart");
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Service_Provider_List");
+        }
+
+        public ActionResult Service_Provider_Assign()
+        {
+            var bId = 1; //User.Identity.Name
+
+            var sps = ServiceAssignRepository.MyServiceProviderAssign(bId);
+
+            return View(sps);
         }
     }
 }
