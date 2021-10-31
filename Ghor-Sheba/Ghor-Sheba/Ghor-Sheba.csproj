@@ -138,6 +138,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="ManagerRepository\assign.cs" />
+    <Compile Include="ManagerRepository\BookingConfirmRepository.cs" />
     <Compile Include="ManagerRepository\BookingRepository.cs" />
     <Compile Include="ManagerRepository\ManagerProfileRepository.cs" />
     <Compile Include="ManagerRepository\ServiceAssignRepository.cs" />
@@ -499,6 +500,8 @@
     <Content Include="Views\Manager\Cart.cshtml" />
     <Content Include="Views\Manager\Service_Provider_Assign.cshtml" />
     <Content Include="Views\Manager\MyProfile.cshtml" />
+    <Content Include="Views\Manager\Booking_Confirm_List.cshtml" />
+    <Content Include="Views\Manager\Booking_Confirm_Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

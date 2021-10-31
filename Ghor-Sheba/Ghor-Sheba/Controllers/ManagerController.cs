@@ -202,6 +202,40 @@ namespace Ghor_Sheba.Controllers
             return View(sps);
         }
 
+        //======================================================================
+        //Booingk Confirm Information
+
+        public ActionResult Booking_Confirm_List()
+        {
+            var p = BookingConfirmRepository.GetAll();
+
+            return View(p);
+        }
+
+        public ActionResult Booking_Confirm_Delete(int id)
+        {
+            var db = new ShebaDbEntities();
+            var booking = (from data in db.Booking_confirms
+                        where data.id == id
+                        select data).FirstOrDefault();
+
+            return View(booking);
+        }
+
+        [HttpPost]
+        public ActionResult Booking_Confirm_Delete(LoginUser user)
+        {
+            var db = new ShebaDbEntities();
+
+            var product = (from p in db.Booking_confirms
+                           where p.id == user.id
+                           select p).FirstOrDefault();
+
+            db.Booking_confirms.Remove(product);
+            db.SaveChanges();
+
+            return RedirectToAction("Booking_Confirm_List", "Manager");
+        }
 
         //=======================================================================
         //Profile Information

@@ -1,0 +1,42 @@
+﻿@model Ghor_Sheba.Models.ManagerViewModel.BookingConfirmModel
+
+@{
+    ViewBag.Title = "Booking_Confirm_Delete";
+}
+
+<h2>Booking_Confirm_Delete</h2>
+
+<div>
+    <h4>BookingConfirmModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.booking_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.booking_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.service_provider_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.service_provider_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.status)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
