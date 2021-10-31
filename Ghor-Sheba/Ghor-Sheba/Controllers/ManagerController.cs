@@ -212,18 +212,16 @@ namespace Ghor_Sheba.Controllers
             return View(p);
         }
 
+        [HttpGet]
         public ActionResult Booking_Confirm_Delete(int id)
         {
-            var db = new ShebaDbEntities();
-            var booking = (from data in db.Booking_confirms
-                        where data.id == id
-                        select data).FirstOrDefault();
+            var bcr = BookingConfirmRepository.Get(id);
 
-            return View(booking);
+            return View(bcr);
         }
 
         [HttpPost]
-        public ActionResult Booking_Confirm_Delete(LoginUser user)
+        public ActionResult Booking_Confirm_Deleted(Booking user)
         {
             var db = new ShebaDbEntities();
 
@@ -254,32 +252,29 @@ namespace Ghor_Sheba.Controllers
         [HttpGet]
         public ActionResult EditProfile()
         {
-            object u_id = Session["userid"];
-            var id = (int)u_id;
+            /*object u_id = Session["userid"];*/
+
+            int id = 5;
             var user = ManagerProfileRepository.GetEditInfo(id);
             return View(user);
 
         }
+
         [HttpPost]
-        public ActionResult Update(LoginUser s)
+        public ActionResult EditProfile(LoginUser user)
         {
-            using (ShebaDbEntities db = new ShebaDbEntities())
-            {
-                var entity = (from u in db.LoginUsers
-                              where u.id == s.id
-                              select u).FirstOrDefault();
+            var db = new ShebaDbEntities();
 
+            /* product.Name = pro.Name*/
 
-                entity.username = s.username.Trim();
-                entity.phone = s.phone.Trim();
-                entity.email = s.email.Trim();
-                entity.password = s.password.Trim();
-                entity.address = s.address.Trim();
-                entity.fullname = s.fullname.Trim();
+            var result = (from p in db.LoginUsers
+                           where p.id == user.id
+                           select p).FirstOrDefault();
 
-                db.SaveChanges();
-                return RedirectToAction("MyProfile");
-            }
+            db.Entry(result).CurrentValues.SetValues(user);
+            db.SaveChanges();
+
+            return RedirectToAction("MyProfile");
         }
     }
 }
