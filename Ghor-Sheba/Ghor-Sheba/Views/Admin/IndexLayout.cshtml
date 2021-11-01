@@ -57,6 +57,9 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
                     <ul class="nav" id="side-menu">
                         <li>
+                            <a href="/Admin/Index" class="active"><i class="fa fa-user nav_icon"></i>Dashboard</a>
+                        </li>
+                        <li>
                             <a href="/Admin/ManageManager" class="active"><i class="fa fa-user nav_icon"></i>Manage Manager</a>
                         </li>
 
@@ -69,19 +72,19 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         </li>
 
                         <li>
-                            <a href="index.html" class="active"><i class="fa fa-book nav_icon"></i>Manage Services</a>
+                            <a href="/Admin/ManageService" class="active"><i class="fa fa-book nav_icon"></i>Manage Services</a>
                         </li>
 
                         <li>
-                            <a href="index.html" class="active"><i class="fa fa-warning nav_icon"></i>Manage Complaints</a>
+                            <a href="/Admin/ManageComplain" class="active"><i class="fa fa-warning nav_icon"></i>Manage Complaints</a>
                         </li>
 
                         <li>
-                            <a href="index.html" class="active"><i class="fa fa-clock-o nav_icon"></i>Manage Booked Services</a>
+                            <a href="/Admin/ManageBookedService" class="active"><i class="fa fa-clock-o nav_icon"></i>Manage Booked Services</a>
                         </li>
 
                         <li>
-                            <a href="index.html" class="active"><i class="fa fa-money nav_icon"></i>Manage Payment</a>
+                            <a href="/Admin/PaymentStatus" class="active"><i class="fa fa-money nav_icon"></i>View Payment Status</a>
                         </li>
 
                     </ul>
@@ -104,17 +107,6 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                     </a>
                 </div>
                 <!--//logo-->
-                <!--search-box-->
-                <div class="search-box">
-                    <form class="input">
-                        <input class="sb-search-input input__field--madoka" placeholder="Search..." type="search" id="input-31" />
-                        <label class="input__label" for="input-31">
-                            <svg class="graphic" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
-                                <path d="m0,0l404,0l0,77l-404,0l0,-77z" />
-                            </svg>
-                        </label>
-                    </form>
-                </div><!--//end-search-box-->
                 <div class="clearfix"> </div>
             </div>
             <div class="header-right">
@@ -124,7 +116,8 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         <li class="dropdown profile_details_drop">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                 <div class="profile_img">
-                                    <span class="prfil-img"><img src="~/AdminTemplate/images/a.png" alt=""> </span>
+   
+                                    <span class="prfil-img"><img  src="~/icons/user.png" alt="" width="35px" height="35px"> </span>
                                     <div class="user-name">
                                         @{ var x = ViewData["username"];}
                                         <p>@x</p>
@@ -136,7 +129,6 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                 </div>
                             </a>
                             <ul class="dropdown-menu drp-mnu">
-                                <li> <a href="#"><i class="fa fa-cog"></i> Settings</a> </li>
                                 <li> <a href="~/Admin/Profile"><i class="fa fa-user"></i> Profile</a> </li>
                                 <li> <a href="/Login/Logout"><i class="fa fa-sign-out"></i> Logout</a> </li>
                             </ul>
@@ -153,7 +145,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 
         <!--footer-->
         <div class="footer">
-            <p>&copy; 2016 Novus Admin Panel. All Rights Reserved | Design by <a href="https://w3layouts.com/" target="_blank">w3layouts</a></p>
+            <p>&copy; Ghor Sheba. All Rights Reserved</a></p>
         </div>
         <!--//footer-->
     </div>

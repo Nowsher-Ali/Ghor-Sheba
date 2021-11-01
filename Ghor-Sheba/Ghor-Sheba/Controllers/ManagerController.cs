@@ -1,5 +1,7 @@
-﻿using Ghor_Sheba.ManagerRepository;
+﻿using Ghor_Sheba.Auth;
+using Ghor_Sheba.ManagerRepository;
 using Ghor_Sheba.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +11,14 @@ using System.Web.Script.Serialization;
 
 namespace Ghor_Sheba.Controllers
 {
+    [ManagerAccess]
     public class ManagerController : Controller
     {
         // GET: Manager
         public ActionResult Index()
         {
+            var data = User.Identity.Name;
+            var user = JsonConvert.DeserializeObject<LoginUser>(data.ToString());
             return View();
         }
 
@@ -483,7 +488,7 @@ namespace Ghor_Sheba.Controllers
         {
             /*object u_id = Session["userid"];*/
 
-            int id = 2;
+            int id = 5;
             var user = ManagerProfileRepository.Get_Password_Info(id);
 
             return View(user);

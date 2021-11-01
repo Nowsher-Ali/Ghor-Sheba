@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using System.Web.Security;
 using Ghor_Sheba.Models;
+using Newtonsoft.Json;
 
 namespace Ghor_Sheba.Controllers
 {
@@ -21,13 +22,25 @@ namespace Ghor_Sheba.Controllers
             if (User.Identity.Name == "") {
                 return View();
             }
-           
+
             var db = new ShebaDbEntities();
             var data = User.Identity.Name;
-            var user = new JavaScriptSerializer().Deserialize < LoginUser >(data.ToString());
-            if(user.user_type=="Admin")
+            var user = JsonConvert.DeserializeObject<LoginUser>(data.ToString());
+            if (user.user_type == "Admin")
             {
                 return RedirectToAction("Index", "Admin");
+            }
+            else if (user.user_type == "ServiceProvider")
+            {
+                return RedirectToAction("Index", "ServiceProvider");
+            }
+            else if(user.user_type == "Customer")
+            {
+                return RedirectToAction("Index", "Customer");
+            }
+            else if(user.user_type == "Manager")
+            {
+                return RedirectToAction("Index", "Manager");
             }
             return View();
         }
@@ -44,9 +57,27 @@ namespace Ghor_Sheba.Controllers
             {
                 if(user.user_type=="Admin")
                 {
-                    string json = new JavaScriptSerializer().Serialize(user);
+                    string json = JsonConvert.SerializeObject(user);
                     FormsAuthentication.SetAuthCookie(json, true);
                     return RedirectToAction("Index", "Admin");
+                }
+                else if(user.user_type=="ServiceProvider")
+                {
+                    string json = JsonConvert.SerializeObject(user);
+                    FormsAuthentication.SetAuthCookie(json, true);
+                    return RedirectToAction("Index", "ServiceProvider");
+                }
+                else if(user.user_type=="Customer")
+                {
+                    string json = JsonConvert.SerializeObject(user);
+                    FormsAuthentication.SetAuthCookie(json, true);
+                    return RedirectToAction("Index", "Customer");
+                }
+                else if (user.user_type == "Manager")
+                {
+                    string json = JsonConvert.SerializeObject(user);
+                    FormsAuthentication.SetAuthCookie(json, true);
+                    return RedirectToAction("Index", "Manager");
                 }
 
             }

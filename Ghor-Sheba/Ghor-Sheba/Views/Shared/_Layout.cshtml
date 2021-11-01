@@ -8,7 +8,7 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    @*<div class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -20,30 +20,17 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        @*   <li><a href="/Manager/Cart">Assign Cart</a></li>
-        <li><a href="/Manager/MyServiceProviderAssign">MyAssign</a></li>*@
-
-                        <li><a href="/Manager/Booking_Confirm_List">Booking Confirm</a></li>
-                        <li><a href="/Manager/Booking_List">Booking List</a></li>
-
-                        <li><a href="/Manager/MyProfile">Profile</a></li>
-                        <li><a href="/Manager/Change_Password">Change Password</a></li>
-
-                        <li><a href="/Manager/Service_Provider_List">Service Provider List</a></li>
-                        <li><a href="/Manager/Service_List">Service List</a></li>
-                        <li><a href="/Manager/Complaint_List">Complain</a></li>
-
-                        @* <li>@Html.ActionLink("Home", "Index", "Home")</li>
-        <li>@Html.ActionLink("About", "About", "Home")</li>
-        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-        <li><a href="/Profile/BIO">BIO</a></li>
-        <li><a href="/Profile/Education">Education</a></li>
-        <li><a href="/Profile/Projects">Projects</a></li>
-        <li><a href="/Profile/References">References</a></li>*@
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                        <li><a href="/Profile/BIO">BIO</a></li>
+                        <li><a href="/Profile/Education">Education</a></li>
+                        <li><a href="/Profile/Projects">Projects</a></li>
+                        <li><a href="/Profile/References">References</a></li>
                     </ul>
                 </div>
             </div>
-        </div>
+        </div>*@
         @RenderBody()
 
 
