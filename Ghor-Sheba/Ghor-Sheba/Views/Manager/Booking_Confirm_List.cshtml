@@ -38,6 +38,7 @@
            @* @Html.ActionLink("Edit", "Booking_Confirm_Edit", new { id = item.id })*@
            @* @Html.ActionLink("Details", "Service_Provider_Assign", new { id = item.booking_id }) |*@
             <a href="/Manager/Booking_Confirm_Details/@item.id" class="btn btn-success">Details</a>
+            <a href="/Manager/Booking_Confirm_Edit/@item.id" class="btn btn-success">Update</a>
             <a href="/Manager/Booking_Confirm_Delete/@item.id" class="btn btn-danger">Delete</a>
            @* @Html.ActionLink("Delete", "Booking_Confirm_Delete", new { id = item.id })*@
         </td>

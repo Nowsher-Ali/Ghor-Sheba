@@ -77,8 +77,38 @@ namespace Ghor_Sheba.Controllers
             return RedirectToAction("Service_List");
         }
 
+
     //================================================================================================
-    //Booking View Page
+
+        [HttpGet]
+        public ActionResult Service_Delete(int id)
+        {
+            var bcr = ServiceRepository.Get(id);
+
+            return View(bcr);
+        }
+
+    //================================================================================================
+
+        [HttpPost]
+        public ActionResult Service_Delete(Service user)
+        {
+            var db = new ShebaDbEntities();
+
+            var serivie = (from p in db.Services
+                           where p.id == user.id
+                           select p).FirstOrDefault();
+
+            db.Services.Remove(serivie);
+            db.SaveChanges();
+
+            return RedirectToAction("Service_List", "Manager");
+        }
+
+
+
+        //================================================================================================
+        //Booking View Page
 
         public ActionResult Booking_List()
         {
@@ -137,6 +167,7 @@ namespace Ghor_Sheba.Controllers
             return RedirectToAction("Booking_List");
         }
 
+    //================================================================================================
 
         [HttpGet]
         public ActionResult Booking_Delete(int id)
@@ -175,13 +206,29 @@ namespace Ghor_Sheba.Controllers
         }
 
 
+        public ActionResult Complaint_Received(int id)
+        {
+            var db = new ShebaDbEntities();
+
+            var b = (from bk in db.Complaints
+                     where bk.id == id && bk.status == "unread"
+                     select bk).FirstOrDefault();
+
+            if (b != null)
+            {
+                ComplaintRepository.Unread_to_Read(id);
+            }
+
+            return RedirectToAction("Complaint_List", "Manager");
+
+        }
+
+
         //================================================================================================
         //Service Provider View Page
 
-        public ActionResult Service_Provider_List(int id)
+        public ActionResult Service_Provider_List()
         {
-           Session["b_id"] = id;
-
            var p = ServiceProviderRepository.GetAll();
 
            /* var db = new ShebaDbEntities();
@@ -190,6 +237,15 @@ namespace Ghor_Sheba.Controllers
                       select data).ToList();*/
 
             return View(p);
+        }
+
+        public ActionResult Service_Provider_Get_Id_List(int id)
+        {
+            Session["b_id"] = id;
+
+            //var p = ServiceProviderRepository.GetAll();
+
+            return View();
         }
 
     //================================================================================================
@@ -219,17 +275,17 @@ namespace Ghor_Sheba.Controllers
 
     //================================================================================================
 
-       /* public ActionResult Cart()
-        {
-            var json = Session["cart"].ToString();
-            var spm = new JavaScriptSerializer().Deserialize<List<ServiceProviderModel>>(json);
+        /* public ActionResult Cart()
+         {
+             var json = Session["cart"].ToString();
+             var spm = new JavaScriptSerializer().Deserialize<List<ServiceProviderModel>>(json);
 
-            return View(spm);
-        }*/
+             return View(spm);
+         }*/
 
-    //================================================================================================
+        //================================================================================================
 
-        public ActionResult Confirm(int sp_id)
+        public ActionResult Confirm(int service_provider_id)
         {
            /* var json = Session["cart"].ToString();
             var spm = new JavaScriptSerializer().Deserialize<List<ServiceProviderModel>>(json);*/
@@ -241,7 +297,7 @@ namespace Ghor_Sheba.Controllers
 
             //var sp_id = Session["cart"];*/
 
-            ServiceAssignRepository.PlaceAssignServiceProvider(b_id,sp_id);
+            ServiceAssignRepository.PlaceAssignServiceProvider(b_id, service_provider_id);
            /* var db = new ShebaDbEntities();
 
             var cs = new Booking_confirms()
@@ -375,7 +431,7 @@ namespace Ghor_Sheba.Controllers
         {
             /* object u_id = Session["userid"];*/
 
-            int u_id = 5;
+            int u_id = 2;
             //var id = u_id;
             var user = ManagerProfileRepository.GetProfileInfo(u_id);
             return View(user);
@@ -388,7 +444,7 @@ namespace Ghor_Sheba.Controllers
         {
             /*object u_id = Session["userid"];*/
 
-            int id = 5;
+            int id = 2;
             var user = ManagerProfileRepository.GetEditInfo(id);
             return View(user);
 
@@ -399,18 +455,61 @@ namespace Ghor_Sheba.Controllers
         [HttpPost]
         public ActionResult EditProfile(LoginUser user)
         {
-            var db = new ShebaDbEntities();
+            //var db = new ShebaDbEntities();
 
             /* product.Name = pro.Name*/
 
-            var result = (from p in db.LoginUsers
-                           where p.id == user.id
-                           select p).FirstOrDefault();
+            using (ShebaDbEntities db = new ShebaDbEntities())
+            {
+                var entity = (from u in db.LoginUsers
+                              where u.id == user.id
+                              select u).FirstOrDefault();
 
-            db.Entry(result).CurrentValues.SetValues(user);
-            db.SaveChanges();
+                entity.username = user.username.Trim();
+                entity.phone = user.phone.Trim();
+                entity.email = user.email.Trim();
+                entity.address = user.address.Trim();
+                entity.fullname = user.fullname.Trim();
 
-            return RedirectToAction("MyProfile");
+                db.SaveChanges();
+                return RedirectToAction("MyProfile");
+            }
         }
+        //================================================================================================
+
+
+        [HttpGet]
+        public ActionResult Change_Password()
+        {
+            /*object u_id = Session["userid"];*/
+
+            int id = 2;
+            var user = ManagerProfileRepository.Get_Password_Info(id);
+
+            return View(user);
+        }
+
+        //================================================================================================
+
+        [HttpPost]
+        public ActionResult Change_Password(LoginUser user)
+        {
+            //var db = new ShebaDbEntities();
+
+            /* product.Name = pro.Name*/
+
+            using (ShebaDbEntities db = new ShebaDbEntities())
+            {
+                var entity = (from u in db.LoginUsers
+                              where u.id == user.id
+                              select u).FirstOrDefault();
+
+                entity.password = user.password.Trim();
+
+                db.SaveChanges();
+                return RedirectToAction("MyProfile");
+            }
+        }
+
     }
 }

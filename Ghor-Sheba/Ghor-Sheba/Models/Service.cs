@@ -23,7 +23,7 @@ namespace Ghor_Sheba.Models
         public string name { get; set; }
         public string category { get; set; }
         public string description { get; set; }
-        public Nullable<int> cost { get; set; }
+        public int cost { get; set; }
     
         public virtual ICollection<Booking_details> Booking_details { get; set; }
     }

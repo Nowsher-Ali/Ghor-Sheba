@@ -32,7 +32,6 @@ namespace Ghor_Sheba.Models
         public string address { get; set; }
         public string status { get; set; }
         public string fullname { get; set; }
-        public byte[] image { get; set; }
     
         public virtual ICollection<Booking_confirms> Booking_confirms { get; set; }
         public virtual ICollection<Booking> Bookings { get; set; }

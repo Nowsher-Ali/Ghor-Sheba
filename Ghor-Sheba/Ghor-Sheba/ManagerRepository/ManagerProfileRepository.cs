@@ -32,5 +32,14 @@ namespace Ghor_Sheba.ManagerRepository
             return user;
 
         }
+
+        public static LoginUser Get_Password_Info(int id)
+        {
+            var user = (from u in db.LoginUsers
+                        where u.id == id
+                        select u).FirstOrDefault();
+            return user;
+
+        }
     }
 }

@@ -7,7 +7,7 @@
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="booking_id" Type="Int32" Nullable="false" />
     <Property Name="service_provider_id" Type="Int32" Nullable="false" />
-    <Property Name="status" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="Booking" Relationship="Self.FK_Booking_confirm_Booking" FromRole="Booking_confirms" ToRole="Bookings" />
     <NavigationProperty Name="LoginUser" Relationship="Self.FK_Booking_confirms_LoginUsers" FromRole="Booking_confirms" ToRole="LoginUsers" />
   </EntityType>
@@ -28,8 +28,8 @@
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="customer_id" Type="Int32" Nullable="false" />
     <Property Name="cost" Type="Int32" Nullable="false" />
-    <Property Name="status" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
-    <Property Name="payment_status" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="payment_status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="Booking_confirms" Relationship="Self.FK_Booking_confirm_Booking" FromRole="Bookings" ToRole="Booking_confirms" />
     <NavigationProperty Name="Booking_details" Relationship="Self.FK_Booking_detail_Booking" FromRole="Bookings" ToRole="Booking_details" />
     <NavigationProperty Name="LoginUser" Relationship="Self.FK_Booking_LoginUser" FromRole="Bookings" ToRole="LoginUsers" />
@@ -40,8 +40,8 @@
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="customer_id" Type="Int32" Nullable="false" />
-    <Property Name="description" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
-    <Property Name="status" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="LoginUser" Relationship="Self.FK_Complaint_LoginUser" FromRole="Complaints" ToRole="LoginUsers" />
   </EntityType>
   <EntityType Name="LoginUser">
@@ -49,15 +49,14 @@
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="username" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
-    <Property Name="password" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
-    <Property Name="email" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
-    <Property Name="phone" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="phone" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="user_type" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="address" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
-    <Property Name="status" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
-    <Property Name="fullname" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
-    <Property Name="image" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="address" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="status" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="fullname" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="Booking_confirms" Relationship="Self.FK_Booking_confirms_LoginUsers" FromRole="LoginUsers" ToRole="Booking_confirms" />
     <NavigationProperty Name="Bookings" Relationship="Self.FK_Booking_LoginUser" FromRole="LoginUsers" ToRole="Bookings" />
     <NavigationProperty Name="Complaints" Relationship="Self.FK_Complaint_LoginUser" FromRole="LoginUsers" ToRole="Complaints" />
@@ -70,7 +69,7 @@
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="customer_id" Type="Int32" Nullable="false" />
-    <Property Name="description" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="LoginUser" Relationship="Self.FK_Review_LoginUser" FromRole="Reviews" ToRole="LoginUsers" />
   </EntityType>
   <EntityType Name="service_provider_status">
@@ -79,7 +78,7 @@
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="service_provider_id" Type="Int32" Nullable="false" />
-    <Property Name="status" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="LoginUser" Relationship="Self.FK_service_provider_status_LoginUser" FromRole="service_provider_status" ToRole="LoginUsers" />
   </EntityType>
   <EntityType Name="Service">
@@ -87,10 +86,10 @@
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="name" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
-    <Property Name="category" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
-    <Property Name="description" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
-    <Property Name="cost" Type="Int32" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="category" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="cost" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Booking_details" Relationship="Self.FK_Booking_detail_Service" FromRole="Services" ToRole="Booking_details" />
   </EntityType>
   <Association Name="FK_Booking_confirm_Booking">

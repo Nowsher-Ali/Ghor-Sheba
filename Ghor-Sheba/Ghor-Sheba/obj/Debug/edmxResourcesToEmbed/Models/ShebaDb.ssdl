@@ -7,7 +7,7 @@
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="booking_id" Type="int" Nullable="false" />
     <Property Name="service_provider_id" Type="int" Nullable="false" />
-    <Property Name="status" Type="nchar" MaxLength="30" Nullable="false" />
+    <Property Name="status" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="Booking_details">
     <Key>
@@ -24,8 +24,8 @@
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="customer_id" Type="int" Nullable="false" />
     <Property Name="cost" Type="int" Nullable="false" />
-    <Property Name="status" Type="nchar" MaxLength="30" Nullable="false" />
-    <Property Name="payment_status" Type="nchar" MaxLength="30" Nullable="false" />
+    <Property Name="status" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="payment_status" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="Complaints">
     <Key>
@@ -33,23 +33,22 @@
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="customer_id" Type="int" Nullable="false" />
-    <Property Name="description" Type="nchar" MaxLength="100" Nullable="false" />
-    <Property Name="status" Type="nchar" MaxLength="30" Nullable="false" />
+    <Property Name="description" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="status" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="LoginUsers">
     <Key>
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="username" Type="nchar" MaxLength="30" Nullable="false" />
-    <Property Name="password" Type="nchar" MaxLength="30" Nullable="false" />
-    <Property Name="email" Type="nchar" MaxLength="30" Nullable="false" />
-    <Property Name="phone" Type="nchar" MaxLength="20" Nullable="false" />
+    <Property Name="username" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="phone" Type="varchar" MaxLength="30" Nullable="false" />
     <Property Name="user_type" Type="varchar" MaxLength="30" Nullable="false" />
-    <Property Name="address" Type="nchar" MaxLength="50" Nullable="false" />
-    <Property Name="status" Type="nchar" MaxLength="20" Nullable="false" />
-    <Property Name="fullname" Type="nchar" MaxLength="50" Nullable="false" />
-    <Property Name="image" Type="image" />
+    <Property Name="address" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="status" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="fullname" Type="varchar" MaxLength="30" Nullable="false" />
   </EntityType>
   <EntityType Name="Reviews">
     <Key>
@@ -57,7 +56,7 @@
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="customer_id" Type="int" Nullable="false" />
-    <Property Name="description" Type="nchar" MaxLength="100" Nullable="false" />
+    <Property Name="description" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="service_provider_status">
     <Key>
@@ -65,17 +64,17 @@
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="service_provider_id" Type="int" Nullable="false" />
-    <Property Name="status" Type="nchar" MaxLength="30" Nullable="false" />
+    <Property Name="status" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="Services">
     <Key>
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="name" Type="nchar" MaxLength="30" Nullable="false" />
-    <Property Name="category" Type="nchar" MaxLength="30" Nullable="false" />
-    <Property Name="description" Type="nchar" MaxLength="50" Nullable="false" />
-    <Property Name="cost" Type="int" />
+    <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="category" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="description" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="cost" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="FK_Booking_confirm_Booking">
     <End Role="Bookings" Type="Self.Bookings" Multiplicity="1" />

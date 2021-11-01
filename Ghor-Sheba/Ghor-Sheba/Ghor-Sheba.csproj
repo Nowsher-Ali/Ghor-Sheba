@@ -146,49 +146,49 @@
     <Compile Include="ManagerRepository\ServiceProviderRepository.cs" />
     <Compile Include="ManagerRepository\ServiceRepository.cs" />
     <Compile Include="Models\Booking.cs">
-      <DependentUpon>ShebaDB.tt</DependentUpon>
+      <DependentUpon>ShebaDb.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Booking_confirms.cs">
-      <DependentUpon>ShebaDB.tt</DependentUpon>
+      <DependentUpon>ShebaDb.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Booking_details.cs">
-      <DependentUpon>ShebaDB.tt</DependentUpon>
+      <DependentUpon>ShebaDb.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Complaint.cs">
-      <DependentUpon>ShebaDB.tt</DependentUpon>
+      <DependentUpon>ShebaDb.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\LoginUser.cs">
-      <DependentUpon>ShebaDB.tt</DependentUpon>
+      <DependentUpon>ShebaDb.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ManagerViewModel\BookingConfirmModel.cs" />
     <Compile Include="Models\ManagerViewModel\BookingModel.cs" />
     <Compile Include="Models\ManagerViewModel\ComplaintModel.cs" />
     <Compile Include="Models\ManagerViewModel\ManagerProfileModel.cs" />
     <Compile Include="Models\ManagerViewModel\ServiceModel.cs" />
+    <Compile Include="Models\ManagerViewModel\ServiceProviderModel.cs" />
     <Compile Include="Models\Review.cs">
-      <DependentUpon>ShebaDB.tt</DependentUpon>
+      <DependentUpon>ShebaDb.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Service.cs">
-      <DependentUpon>ShebaDB.tt</DependentUpon>
+      <DependentUpon>ShebaDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ManagerViewModel\ServiceProviderModel.cs" />
     <Compile Include="Models\service_provider_status.cs">
-      <DependentUpon>ShebaDB.tt</DependentUpon>
+      <DependentUpon>ShebaDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ShebaDB.Context.cs">
+    <Compile Include="Models\ShebaDb.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ShebaDB.Context.tt</DependentUpon>
+      <DependentUpon>ShebaDb.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ShebaDB.cs">
+    <Compile Include="Models\ShebaDb.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ShebaDB.tt</DependentUpon>
+      <DependentUpon>ShebaDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ShebaDB.Designer.cs">
+    <Compile Include="Models\ShebaDb.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ShebaDB.edmx</DependentUpon>
+      <DependentUpon>ShebaDb.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -255,15 +255,15 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\ShebaDB.Context.tt">
+    <Content Include="Models\ShebaDb.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ShebaDB.edmx</DependentUpon>
-      <LastGenOutput>ShebaDB.Context.cs</LastGenOutput>
+      <DependentUpon>ShebaDb.edmx</DependentUpon>
+      <LastGenOutput>ShebaDb.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\ShebaDB.tt">
+    <Content Include="Models\ShebaDb.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ShebaDB.edmx</DependentUpon>
-      <LastGenOutput>ShebaDB.cs</LastGenOutput>
+      <DependentUpon>ShebaDb.edmx</DependentUpon>
+      <LastGenOutput>ShebaDb.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -289,12 +289,12 @@
     <Content Include="AdminTemplate\fonts\FontAwesome.otf" />
     <Content Include="AdminTemplate\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="AdminTemplate\fonts\glyphicons-halflings-regular.woff2" />
-    <EntityDeploy Include="Models\ShebaDB.edmx">
+    <EntityDeploy Include="Models\ShebaDb.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ShebaDB.Designer.cs</LastGenOutput>
+      <LastGenOutput>ShebaDb.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\ShebaDB.edmx.diagram">
-      <DependentUpon>ShebaDB.edmx</DependentUpon>
+    <Content Include="Models\ShebaDb.edmx.diagram">
+      <DependentUpon>ShebaDb.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -504,11 +504,13 @@
     <Content Include="Views\Manager\Booking_Confirm_List.cshtml" />
     <Content Include="Views\Manager\Booking_Confirm_Delete.cshtml" />
     <Content Include="Views\Manager\MyProfile.cshtml" />
-    <Content Include="Views\Manager\EditProfile.cshtml" />
     <Content Include="Views\Manager\Booking_Confirm_Edit.cshtml" />
     <Content Include="Views\Manager\Booking_Confirm_Details.cshtml" />
     <Content Include="Views\Manager\Booking_Delete.cshtml" />
     <Content Include="Views\Manager\Complaint_List.cshtml" />
+    <Content Include="Views\Manager\EditProfile.cshtml" />
+    <Content Include="Views\Manager\Service_Delete.cshtml" />
+    <Content Include="Views\Manager\Change_Password.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

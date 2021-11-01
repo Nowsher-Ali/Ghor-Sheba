@@ -48,5 +48,24 @@ namespace Ghor_Sheba.ManagerRepository
             }
             return product;
         }
+
+        public static void Unread_to_Read(int id)
+        {
+            var b = (from bk in db.Complaints
+                     where bk.id == id && bk.status=="unread"
+                     select bk).FirstOrDefault();
+
+            var cs = new Complaint()
+            {
+                id = b.id,
+                customer_id = b.customer_id,
+                description = b.description,
+                status = "read"
+            };
+
+            db.Complaints.Remove(b);
+            db.Complaints.Add(cs);
+            db.SaveChanges();
+        }
     }
 }
