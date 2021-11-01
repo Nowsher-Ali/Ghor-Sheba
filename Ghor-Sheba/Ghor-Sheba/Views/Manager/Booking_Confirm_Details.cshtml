@@ -1,13 +1,13 @@
-﻿@model Ghor_Sheba.Models.ManagerViewModel.BookingConfirmModel
+﻿@model Ghor_Sheba.Models.Booking_confirms
 
 @{
-    ViewBag.Title = "Booking_Confirm_Delete";
+    ViewBag.Title = "Booking_Confirm_Details";
 }
 
-<h2>Booking_Confirm_Delete</h2>
+<h2>Booking_Confirm_Details</h2>
 
 <div>
-    <h4>BookingConfirmModel</h4>
+    <h4>Booking_confirms</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -37,14 +37,6 @@
     </dl>
 </div>
 <p>
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
-
-    <div class="form-actions no-color">
-        <input type="submit" value="Delete" class="btn btn-danger" />
-        <a href="/Manager/Booking_Confirm_List" class="btn btn-success">Back to List</a>
-    </div>
-    }
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
 </p>
-    

@@ -27,26 +27,30 @@
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.customer_id)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.cost)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.status)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.payment_status)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Booking_Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id }) |
-            @Html.ActionLink("Assign", "Service_Provider_List", new { id=item.id })
-        </td>
-    </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.customer_id)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.cost)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.status)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.payment_status)
+    </td>
+    <td>
+        @*     @Html.ActionLink("Edit", "Booking_Edit", new { id = item.id }) |
+        @Html.ActionLink("Details", "Details", new { id = item.id }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.id }) |
+         @Html.ActionLink("Assign", "Service_Provider_List", new { id=item.id })*@
+
+        <a href="/Manager/Booking_Edit/@item.id" class="btn btn-success">Update</a>
+        <a href="/Manager/Service_Provider_List/@item.id" class="btn btn-success">Assign</a>
+        <a href="/Manager/Booking_Delete/@item.id" class="btn btn-danger">Delete</a>
+    </td>
+</tr>
 }
 
 </table>

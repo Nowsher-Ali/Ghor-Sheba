@@ -17,6 +17,8 @@ namespace Ghor_Sheba.Controllers
             return View();
         }
 
+    //================================================================================================
+
         // GET: Manager
         public ActionResult Service_List()
         {
@@ -25,11 +27,15 @@ namespace Ghor_Sheba.Controllers
             return View(p);
         }
 
+    //================================================================================================
+
         [HttpGet]
         public ActionResult Service_Create()
         {
             return View();
         }
+
+    //================================================================================================
 
         [HttpPost]
         public ActionResult Service_Create(Service s)
@@ -41,6 +47,8 @@ namespace Ghor_Sheba.Controllers
             return RedirectToAction("Service_List");
         }
 
+    //================================================================================================
+
         [HttpGet]
         public ActionResult Service_Edit(int id)
         {
@@ -50,6 +58,8 @@ namespace Ghor_Sheba.Controllers
                            select p).FirstOrDefault();
             return View(product);
         }
+
+    //================================================================================================
 
         [HttpPost]
         public ActionResult Service_Edit(Service pro)
@@ -67,8 +77,8 @@ namespace Ghor_Sheba.Controllers
             return RedirectToAction("Service_List");
         }
 
-        //==========================================================
-        //Booking View Page
+    //================================================================================================
+    //Booking View Page
 
         public ActionResult Booking_List()
         {
@@ -77,11 +87,15 @@ namespace Ghor_Sheba.Controllers
             return View(p);
         }
 
+    //================================================================================================
+
         [HttpGet]
         public ActionResult Booking_Create()
         {
             return View();
         }
+
+    //================================================================================================
 
         [HttpPost]
         public ActionResult Booking_Create(Booking s)
@@ -93,6 +107,8 @@ namespace Ghor_Sheba.Controllers
             return RedirectToAction("Booking_List");
         }
 
+     //================================================================================================
+
         [HttpGet]
         public ActionResult Booking_Edit(int id)
         {
@@ -102,6 +118,8 @@ namespace Ghor_Sheba.Controllers
                            select p).FirstOrDefault();
             return View(product);
         }
+
+    //================================================================================================
 
         [HttpPost]
         public ActionResult Booking_Edit(Booking pro)
@@ -120,16 +138,62 @@ namespace Ghor_Sheba.Controllers
         }
 
 
-        //==========================================================
-        //Service Provider View Page
-
-        public ActionResult Service_Provider_List()
+        [HttpGet]
+        public ActionResult Booking_Delete(int id)
         {
-            var p = ServiceProviderRepository.GetAll();
+            var bcr = BookingRepository.Get(id);
+
+            return View(bcr);
+        }
+
+    //================================================================================================
+
+        [HttpPost]
+        public ActionResult Booking_Delete(LoginUser user)
+        {
+            var db = new ShebaDbEntities();
+
+            var booking = (from p in db.Bookings
+                           where p.id == user.id
+                           select p).FirstOrDefault();
+
+            db.Bookings.Remove(booking);
+            db.SaveChanges();
+
+            return RedirectToAction("Booking_List", "Manager");
+        }
+
+
+    //================================================================================================
+    //Complaint Customer View Page
+
+        public ActionResult Complaint_List()
+        {
+            var p = ComplaintRepository.GetAll();
 
             return View(p);
         }
 
+
+        //================================================================================================
+        //Service Provider View Page
+
+        public ActionResult Service_Provider_List(int id)
+        {
+           Session["b_id"] = id;
+
+           var p = ServiceProviderRepository.GetAll();
+
+           /* var db = new ShebaDbEntities();
+            var sp = (from data in db.service_provider_status
+                      where data.status == "available"
+                      select data).ToList();*/
+
+            return View(p);
+        }
+
+    //================================================================================================
+        /*
         public ActionResult AddToCart(int id)
         {
             var spr = ServiceProviderRepository.Get(id);
@@ -151,17 +215,64 @@ namespace Ghor_Sheba.Controllers
             Session["cart"] = json2;
 
             return RedirectToAction("Cart", "Manager");
-        }
+        }*/
 
-        public ActionResult Cart()
+    //================================================================================================
+
+       /* public ActionResult Cart()
         {
             var json = Session["cart"].ToString();
             var spm = new JavaScriptSerializer().Deserialize<List<ServiceProviderModel>>(json);
 
             return View(spm);
+        }*/
+
+    //================================================================================================
+
+        public ActionResult Confirm(int sp_id)
+        {
+           /* var json = Session["cart"].ToString();
+            var spm = new JavaScriptSerializer().Deserialize<List<ServiceProviderModel>>(json);*/
+
+            //var bid = 1; //User.Identity.Name => I pencipal class instance from cookei file
+
+            var id = Session["b_id"].ToString();
+            int b_id = Int32.Parse(id);
+
+            //var sp_id = Session["cart"];*/
+
+            ServiceAssignRepository.PlaceAssignServiceProvider(b_id,sp_id);
+           /* var db = new ShebaDbEntities();
+
+            var cs = new Booking_confirms()
+            {
+                booking_id = Int32.Parse(id),
+                service_provider_id = sp_id,
+                status = "busy"
+            };
+            db.Booking_confirms.Add(cs);
+            db.SaveChanges();*/
+
+            Session.Remove("b_id");
+
+
+            return RedirectToAction("Service_Provider_List", "Manager");
         }
 
-        public ActionResult DeleteToCart(int id)
+        //================================================================================================
+
+        public ActionResult Service_Provider_Assign(int bId)
+        {
+            //var bId = 1; //User.Identity.Name
+
+            var sps = ServiceAssignRepository.MyServiceProviderAssign(bId);
+
+            return View(sps);
+        }
+
+        //================================================================================================
+
+        /*public ActionResult DeleteToCart(int id)
         {
             var jsonString = Session["cart"].ToString();
             var data = new JavaScriptSerializer().Deserialize<List<ServiceProviderModel>>(jsonString);
@@ -177,33 +288,10 @@ namespace Ghor_Sheba.Controllers
 
             return RedirectToAction("Cart");
 
-        }
+        }*/
 
-        public ActionResult Confirm()
-        {
-            var json = Session["cart"].ToString();
-            var spm = new JavaScriptSerializer().Deserialize<List<ServiceProviderModel>>(json);
-
-            var bid = 1; //User.Identity.Name => I pencipal class instance from cookei file
-
-            ServiceAssignRepository.PlaceAssignServiceProvider(bid);
-
-            Session.Remove("cart");
-
-            return RedirectToAction("Service_Provider_List");
-        }
-
-        public ActionResult Service_Provider_Assign()
-        {
-            var bId = 1; //User.Identity.Name
-
-            var sps = ServiceAssignRepository.MyServiceProviderAssign(bId);
-
-            return View(sps);
-        }
-
-        //======================================================================
-        //Booingk Confirm Information
+    //================================================================================================
+    //Booingk Confirm Information
 
         public ActionResult Booking_Confirm_List()
         {
@@ -211,6 +299,48 @@ namespace Ghor_Sheba.Controllers
 
             return View(p);
         }
+
+    //================================================================================================
+
+        public ActionResult Booking_Confirm_Details(int id)
+        {
+            var p = ServiceAssignRepository.MyServiceProviderAssign(id);
+
+            return View(p);
+        }
+
+    //================================================================================================
+
+        [HttpGet]
+        public ActionResult Booking_Confirm_Edit(int id)
+        {
+            var db = new ShebaDbEntities();
+            var result = (from p in db.Booking_confirms
+                           where p.id == id
+                           select p).FirstOrDefault();
+            return View(result);
+        }
+
+    //================================================================================================
+
+        [HttpPost]
+        public ActionResult Booking_Confirm_Edit(LoginUser get)
+        {
+            var db = new ShebaDbEntities();
+
+            /* product.Name = pro.Name*/
+
+            var result = (from p in db.Booking_confirms
+                           where p.id == get.id
+                           select p).FirstOrDefault();
+
+            db.Entry(result).CurrentValues.SetValues(get);
+            db.SaveChanges();
+
+            return RedirectToAction("Booking_Confirm_List");
+        }
+
+    //================================================================================================
 
         [HttpGet]
         public ActionResult Booking_Confirm_Delete(int id)
@@ -220,23 +350,25 @@ namespace Ghor_Sheba.Controllers
             return View(bcr);
         }
 
+    //================================================================================================
+
         [HttpPost]
-        public ActionResult Booking_Confirm_Deleted(Booking user)
+        public ActionResult Booking_Confirm_Delete(LoginUser user)
         {
             var db = new ShebaDbEntities();
 
-            var product = (from p in db.Booking_confirms
+            var booking = (from p in db.Booking_confirms
                            where p.id == user.id
                            select p).FirstOrDefault();
 
-            db.Booking_confirms.Remove(product);
+            db.Booking_confirms.Remove(booking);
             db.SaveChanges();
 
             return RedirectToAction("Booking_Confirm_List", "Manager");
         }
 
-        //=======================================================================
-        //Profile Information
+    //================================================================================================
+    //Profile Information
 
         [HttpGet]
         public ActionResult MyProfile()
@@ -249,6 +381,8 @@ namespace Ghor_Sheba.Controllers
             return View(user);
         }
 
+    //================================================================================================
+
         [HttpGet]
         public ActionResult EditProfile()
         {
@@ -259,6 +393,8 @@ namespace Ghor_Sheba.Controllers
             return View(user);
 
         }
+
+    //================================================================================================
 
         [HttpPost]
         public ActionResult EditProfile(LoginUser user)

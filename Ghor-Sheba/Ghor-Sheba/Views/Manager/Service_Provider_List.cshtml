@@ -29,10 +29,10 @@
             @Html.DisplayFor(modelItem => item.status)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+           @* @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
             @Html.ActionLink("Details", "Details", new { id = item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.id }) |
-            <a href="/Manager/AddToCart/@item.id" class="btn btn-success">Add To Cart</a> |
+            @Html.ActionLink("Delete", "Delete", new { id = item.id }) |*@
+            <a href="/Manager/Confirm/@item.service_provider_id" class="btn btn-success">Confirm</a>
         </td>
     </tr>
 }

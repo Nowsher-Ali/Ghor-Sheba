@@ -140,6 +140,7 @@
     <Compile Include="ManagerRepository\assign.cs" />
     <Compile Include="ManagerRepository\BookingConfirmRepository.cs" />
     <Compile Include="ManagerRepository\BookingRepository.cs" />
+    <Compile Include="ManagerRepository\ComplaintRepository.cs" />
     <Compile Include="ManagerRepository\ManagerProfileRepository.cs" />
     <Compile Include="ManagerRepository\ServiceAssignRepository.cs" />
     <Compile Include="ManagerRepository\ServiceProviderRepository.cs" />
@@ -161,6 +162,7 @@
     </Compile>
     <Compile Include="Models\ManagerViewModel\BookingConfirmModel.cs" />
     <Compile Include="Models\ManagerViewModel\BookingModel.cs" />
+    <Compile Include="Models\ManagerViewModel\ComplaintModel.cs" />
     <Compile Include="Models\ManagerViewModel\ManagerProfileModel.cs" />
     <Compile Include="Models\ManagerViewModel\ServiceModel.cs" />
     <Compile Include="Models\Review.cs">
@@ -503,6 +505,10 @@
     <Content Include="Views\Manager\Booking_Confirm_Delete.cshtml" />
     <Content Include="Views\Manager\MyProfile.cshtml" />
     <Content Include="Views\Manager\EditProfile.cshtml" />
+    <Content Include="Views\Manager\Booking_Confirm_Edit.cshtml" />
+    <Content Include="Views\Manager\Booking_Confirm_Details.cshtml" />
+    <Content Include="Views\Manager\Booking_Delete.cshtml" />
+    <Content Include="Views\Manager\Complaint_List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

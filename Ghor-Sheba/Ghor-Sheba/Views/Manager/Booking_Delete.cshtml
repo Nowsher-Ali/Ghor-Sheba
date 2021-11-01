@@ -1,0 +1,57 @@
+﻿@model Ghor_Sheba.Models.ManagerViewModel.BookingModel
+
+@{
+    ViewBag.Title = "Booking_Delete";
+}
+
+<h2>Booking_Delete</h2>
+
+<div>
+    <h4>BookingModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.customer_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.customer_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cost)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cost)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.payment_status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.payment_status)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" />
+            <a href="/Manager/Booking_List" class="btn btn-success">Back to List</a>
+        </div>
+    }
+</p>

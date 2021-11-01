@@ -1,4 +1,5 @@
 ﻿using Ghor_Sheba.Models;
+using Ghor_Sheba.Models.ManagerViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,15 +16,36 @@ namespace Ghor_Sheba.ManagerRepository
             db = new ShebaDbEntities();
         }
 
-        public static void PlaceAssignServiceProvider(int bId)
+        public static BookingConfirmModel Get(int Id)
         {
-            Booking_confirms bc = new Booking_confirms();
+            var b = (from bk in db.Booking_confirms
+                     where bk.id == Id
+                     select bk).FirstOrDefault();
+
+            return new BookingConfirmModel()
+            {
+                id = b.id,
+                booking_id = b.booking_id,
+                service_provider_id = b.service_provider_id,
+                status = b.status
+            };
+        }
+
+        public static void PlaceAssignServiceProvider(int bId, int sp_id)
+        {
+            /*Booking_confirms bc = new Booking_confirms();
 
             bc.booking_id = bId;
-            bc.service_provider_id = 3;
-            bc.status = "pending";
+            bc.service_provider_id = sp_id;
+            bc.status = "busy";*/
 
-            db.Booking_confirms.Add(bc);
+            var cs = new Booking_confirms()
+            {
+                booking_id = bId,
+                service_provider_id = sp_id,
+                status = "busy"
+            };
+            db.Booking_confirms.Add(cs);
             db.SaveChanges();
         }
 
