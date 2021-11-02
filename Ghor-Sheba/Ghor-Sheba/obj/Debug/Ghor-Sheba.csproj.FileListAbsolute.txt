@@ -240,3 +240,6 @@ D:\New folder\Ghor-Sheba\Ghor-Sheba\obj\Debug\Ghor-Sheba.csproj.AssemblyReferenc
 D:\New folder\Ghor-Sheba\Ghor-Sheba\obj\Debug\Ghor-Sheba.csproj.CoreCompileInputs.cache
 D:\New folder\Ghor-Sheba\Ghor-Sheba\obj\Debug\Ghor-Sheba.dll
 D:\New folder\Ghor-Sheba\Ghor-Sheba\obj\Debug\Ghor-Sheba.pdb
+D:\Ghor-Sheba\Ghor-Sheba\Ghor-Sheba\obj\Debug\Ghor-Sheba.csproj.AssemblyReference.cache
+D:\Ghor-Sheba\Ghor-Sheba\Ghor-Sheba\obj\Debug\Ghor-Sheba.dll
+D:\Ghor-Sheba\Ghor-Sheba\Ghor-Sheba\obj\Debug\Ghor-Sheba.pdb
